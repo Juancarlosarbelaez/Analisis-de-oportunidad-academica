@@ -15,6 +15,14 @@ Repositorio para el análisis de tendencias de mercado académico utilizando age
 
 ### Requisitos
 
+Instalar las dependencias necesarias:
+
+```bash
+pip install -r requirements.txt
+```
+
+O instalar manualmente:
+
 ```bash
 pip install pandas openpyxl matplotlib seaborn numpy
 ```
@@ -60,6 +68,37 @@ El script genera los siguientes archivos:
 - `distribucion_areas_conocimiento.png`: Distribución por áreas
 - `dashboard_completo.png`: Dashboard integrado con todas las visualizaciones
 - `reporte_analisis_tendencias.txt`: Reporte con insights y recomendaciones
+
+### Ejemplo de Salida
+
+Cuando se ejecuta el script, verás una salida similar a:
+
+```
+================================================================================
+SISTEMA DE ANÁLISIS DE TENDENCIAS DE MERCADO CON AGENTES DE IA
+================================================================================
+
+📋 FASE 1: ANÁLISIS Y PREPROCESAMIENTO DE DATOS
+🤖 Agente de Análisis: Cargando datos...
+✓ Datos cargados: 177 registros, 44 columnas
+
+📊 FASE 2: IDENTIFICACIÓN DE TENDENCIAS DE MERCADO
+🤖 Agente de Tendencias: Analizando evolución temporal de matrículas...
+
+📈 FASE 3: GENERACIÓN DE VISUALIZACIONES
+🤖 Agente de Visualización: Creando gráfica de tendencia temporal...
+✓ Gráfica guardada: tendencia_temporal_matricula.png
+
+💡 FASE 4: GENERACIÓN DE INSIGHTS Y RECOMENDACIONES
+✅ ANÁLISIS COMPLETADO EXITOSAMENTE
+```
+
+El reporte generado incluye insights como:
+- Institución líder en matrícula
+- Programas académicos más populares
+- Distribución entre sectores público y privado
+- Áreas de conocimiento dominantes
+- Recomendaciones estratégicas para oportunidades de mercado
 
 ## Licencia
 
