@@ -1,0 +1,11 @@
+pandas==2.3.3
+numpy==2.3.4
+matplotlib==3.10.7
+seaborn==0.13.2
+python-dotenv==1.1.1
+openpyxl==3.1.2
+python-pptx==0.6.21
+pillow==11.3.0
+strands-agents==1.13.0
+strands-agents-tools==0.2.12
+openai==1.108.1
