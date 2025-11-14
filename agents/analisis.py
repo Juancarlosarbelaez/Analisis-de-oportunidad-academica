@@ -20,12 +20,25 @@ class AgenteAnalisisDatos:
     def preprocesar_datos(self):
         """Preprocesa y limpia los datos"""
         print("\n🤖 Agente de Análisis: Preprocesando datos...")
+        # Validar columnas requeridas mínimas
+        columnas_requeridas = ['MATRICULA']
+        for col in columnas_requeridas:
+            if col not in self.datos.columns:
+                raise ValueError(f"Columna requerida faltante en el dataset: {col}")
 
-        # Limpiar valores nulos en columnas importantes
+        # Columnas para construir PERIODO (derivada), tolerar nombres alternos
+        anio_cols = [c for c in self.datos.columns if c.upper().startswith('AÑO')]
+        semestre_cols = [c for c in self.datos.columns if c.upper().startswith('SEMESTRE')]
+        if anio_cols and semestre_cols:
+            col_anio = anio_cols[0]
+            col_semestre = semestre_cols[0]
+            self.datos['PERIODO'] = self.datos[col_anio].astype(str) + '-' + self.datos[col_semestre].astype(str)
+        elif 'PERIODO' not in self.datos.columns:
+            # Si no se puede construir y tampoco existe, advertir para trazabilidad
+            print("⚠️ No se pudo construir columna PERIODO: faltan columnas de año/semestre.")
+
+        # Limpiar valores nulos en matrícula
         self.datos['MATRICULA'].fillna(0, inplace=True)
-
-        # Crear columnas derivadas útiles
-        self.datos['PERIODO_COMPLETO'] = self.datos['AÑO_x'].astype(str) + '-' + self.datos['SEMESTRE_x'].astype(str)
 
         print("✓ Datos preprocesados")
         return self.datos
@@ -36,10 +49,11 @@ class AgenteAnalisisDatos:
         print(f"   • Total de registros: {len(self.datos)}")
         print(f"   • Instituciones únicas: {self.datos['INSTITUCION'].nunique()}")
         print(f"   • Programas académicos únicos: {self.datos['PROGRAMA_ACADEMICO'].nunique()}")
-        print(f"   • Períodos analizados: {self.datos['PERIODO'].nunique()}")
+        periodos = self.datos['PERIODO'].nunique() if 'PERIODO' in self.datos.columns else 0
+        print(f"   • Períodos analizados: {periodos}")
         return {
             'total_registros': len(self.datos),
-            'instituciones': self.datos['INSTITUCION'].nunique(),
-            'programas': self.datos['PROGRAMA_ACADEMICO'].nunique(),
-            'periodos': self.datos['PERIODO'].nunique()
+            'instituciones': self.datos['INSTITUCION'].nunique() if 'INSTITUCION' in self.datos.columns else 0,
+            'programas': self.datos['PROGRAMA_ACADEMICO'].nunique() if 'PROGRAMA_ACADEMICO' in self.datos.columns else 0,
+            'periodos': periodos
         }
