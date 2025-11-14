@@ -30,8 +30,8 @@ class AgenteVisualizacion:
             plt.xticks(rotation=45, ha='right')
             plt.tight_layout()
 
-            # Guardar figura
-            save_figure('tendencia_temporal_matricula.png')
+            # Guardar figura usando el objeto `fig` para evitar condiciones de carrera
+            fig.savefig('tendencia_temporal_matricula.png', dpi=300, bbox_inches='tight')
             self.figuras.append('tendencia_temporal_matricula.png')
             print("✓ Gráfica guardada: tendencia_temporal_matricula.png")
 
@@ -57,8 +57,8 @@ class AgenteVisualizacion:
             ax.invert_yaxis()
             plt.tight_layout()
 
-            # Guardar figura
-            save_figure('top_instituciones_matricula.png')
+            # Guardar figura usando el objeto `fig` para evitar condiciones de carrera
+            fig.savefig('top_instituciones_matricula.png', dpi=300, bbox_inches='tight')
             self.figuras.append('top_instituciones_matricula.png')
             print("✓ Gráfica guardada: top_instituciones_matricula.png")
 
@@ -82,8 +82,8 @@ class AgenteVisualizacion:
             ax.grid(True, alpha=0.3, axis='y')
             plt.tight_layout()
 
-            # Guardar figura
-            save_figure('distribucion_programas.png')
+            # Guardar figura usando el objeto `fig` para evitar condiciones de carrera
+            fig.savefig('distribucion_programas.png', dpi=300, bbox_inches='tight')
             self.figuras.append('distribucion_programas.png')
             print("✓ Gráfica guardada: distribucion_programas.png")
 
@@ -107,8 +107,8 @@ class AgenteVisualizacion:
                         fontsize=14, fontweight='bold', pad=20)
             plt.tight_layout()
 
-            # Guardar figura
-            save_figure('distribucion_sectores.png')
+            # Guardar figura usando el objeto `fig` para evitar condiciones de carrera
+            fig.savefig('distribucion_sectores.png', dpi=300, bbox_inches='tight')
             self.figuras.append('distribucion_sectores.png')
             print("✓ Gráfica guardada: distribucion_sectores.png")
 
@@ -141,8 +141,8 @@ class AgenteVisualizacion:
 
             plt.tight_layout()
 
-            # Guardar figura
-            save_figure('distribucion_areas_conocimiento.png')
+            # Guardar figura usando el objeto `fig` para evitar condiciones de carrera
+            fig.savefig('distribucion_areas_conocimiento.png', dpi=300, bbox_inches='tight')
             self.figuras.append('distribucion_areas_conocimiento.png')
             print("✓ Gráfica guardada: distribucion_areas_conocimiento.png")
 
@@ -214,8 +214,8 @@ class AgenteVisualizacion:
 
         plt.suptitle('Dashboard de Análisis de Tendencias de Mercado Académico', fontsize=16, fontweight='bold', y=0.995)
 
-        # Guardar dashboard
-        save_figure('dashboard_completo.png')
+        # Guardar dashboard usando el objeto `fig`
+        fig.savefig('dashboard_completo.png', dpi=300, bbox_inches='tight')
         self.figuras.append('dashboard_completo.png')
         print("Dashboard guardado: dashboard_completo.png")
         plt.close()
