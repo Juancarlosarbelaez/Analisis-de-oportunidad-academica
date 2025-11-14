@@ -22,19 +22,41 @@ else:
     # última opción: carga por defecto (dejar que load_dotenv busque)
     load_dotenv()
 
-# Prioriza AZURE_OPENAI_API_KEY, si no existe usa OPENAI_API_KEY
-AZURE_KEY = os.getenv("AZURE_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+# Resolver claves: aceptar varias convenciones para compatibilidad
+AZURE_KEY = (
+    os.getenv("AZURE_OPENAI_API_KEY")
+    or os.getenv("AZURE_OPENAI_KEY")
+    or os.getenv("OPENAI_API_KEY")
+)
 
 
 def get_configured_model() -> OpenAIModel:
+    # Endpoint configurable desde la variable `AZURE_OPENAI_ENDPOINT`.
+    # Si no se proporciona, se usa el endpoint por defecto (legacy en este repo).
+    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+    if endpoint:
+        endpoint = endpoint.rstrip('/')
+        # Si el usuario pasa solo el host (https://mi-recurso.openai.azure.com),
+        # añadimos la ruta `/openai/v1` que espera la librería.
+        if '/openai' not in endpoint:
+            base_url = endpoint + '/openai/v1'
+        else:
+            base_url = endpoint
+    else:
+        base_url = 'https://pnl-maestria.openai.azure.com/openai/v1'
+
+    # Permitir elegir deployment/model desde la variable de ambiente
+    model_id = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME") or os.getenv("OPENAI_MODEL") or "gpt-4.1-nano"
+
     client_args = {
         "api_key": AZURE_KEY,
         # "api_version": '2024-12-01-preview',
-        "base_url": 'https://pnl-maestria.openai.azure.com/openai/v1',
+        "base_url": base_url,
     }
+
     model = OpenAIModel(
         client_args=client_args,
-        model_id="gpt-4.1-nano",
+        model_id=model_id,
         params={"temperature": 0.2, "max_tokens": 10000},
     )
     return model
