@@ -7,10 +7,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
 class AgenteVisualizacion:
-    """
-    Agente de IA especializado en generación de visualizaciones.
-    Crea gráficas profesionales para presentar los resultados del análisis.
-    """
+
 
     def __init__(self, datos, tendencias):
         self.datos = datos
@@ -19,7 +16,7 @@ class AgenteVisualizacion:
 
     def crear_grafica_tendencia_temporal(self):
         """Crea gráfica de tendencia temporal de matrícula"""
-        print("\n🤖 Agente de Visualización: Creando gráfica de tendencia temporal...")
+        print("Agente de Visualización: Creando gráfica de tendencia temporal...")
 
         fig, ax = plt.subplots(figsize=(12, 6))
 
@@ -42,7 +39,7 @@ class AgenteVisualizacion:
 
     def crear_grafica_top_instituciones(self, top_n=10):
         """Crea gráfica de top instituciones por matrícula"""
-        print("\n🤖 Agente de Visualización: Creando gráfica de top instituciones...")
+        print("Agente de Visualización: Creando gráfica de top instituciones...")
 
         fig, ax = plt.subplots(figsize=(12, 8))
 
@@ -69,7 +66,7 @@ class AgenteVisualizacion:
 
     def crear_grafica_programas(self):
         """Crea gráfica de programas académicos"""
-        print("\n🤖 Agente de Visualización: Creando gráfica de programas académicos...")
+        print("Agente de Visualización: Creando gráfica de programas académicos...")
 
         fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -94,7 +91,7 @@ class AgenteVisualizacion:
 
     def crear_grafica_sectores(self):
         """Crea gráfica de distribución por sectores"""
-        print("\n🤖 Agente de Visualización: Creando gráfica de sectores...")
+        print("Agente de Visualización: Creando gráfica de sectores...")
 
         fig, ax = plt.subplots(figsize=(10, 8))
 
@@ -119,7 +116,7 @@ class AgenteVisualizacion:
 
     def crear_grafica_areas_conocimiento(self):
         """Crea gráfica de áreas de conocimiento"""
-        print("\n🤖 Agente de Visualización: Creando gráfica de áreas de conocimiento...")
+        print("Agente de Visualización: Creando gráfica de áreas de conocimiento...")
 
         fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -153,7 +150,7 @@ class AgenteVisualizacion:
 
     def crear_dashboard_completo(self):
         """Crea un dashboard con múltiples gráficas y lo guarda."""
-        print("\n🤖 Agente de Visualización: Creando dashboard completo...")
+        print("Agente de Visualización: Creando dashboard completo...")
 
         fig = plt.figure(figsize=(16, 12))
         gs = fig.add_gridspec(3, 2, hspace=0.3, wspace=0.3)
@@ -220,7 +217,7 @@ class AgenteVisualizacion:
         # Guardar dashboard
         save_figure('dashboard_completo.png')
         self.figuras.append('dashboard_completo.png')
-        print("✓ Dashboard guardado: dashboard_completo.png")
+        print("Dashboard guardado: dashboard_completo.png")
         plt.close()
 
     async def crear_todas_graficas(self, top_n: int = 10) -> None:

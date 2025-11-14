@@ -53,4 +53,4 @@ class AgentePresentacion:
 
         # 5. Guardar presentación
         prs.save(nombre_archivo)
-        print(f"✓ Presentación guardada: {nombre_archivo}")
+        print(f"Presentación guardada: {nombre_archivo}")

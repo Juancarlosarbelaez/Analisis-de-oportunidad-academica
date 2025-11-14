@@ -1,16 +1,10 @@
-"""Model Configuration
 
-Carga la API key desde un archivo `.env` de forma robusta (busca junto
-al módulo y luego en el directorio de trabajo).  También permite usar una
-variable de entorno alternativa `OPENAI_API_KEY`.
-"""
 import os
 from pathlib import Path
 from strands.models.openai import OpenAIModel
 from dotenv import load_dotenv
 
-# Intentar cargar .env desde la ubicación del módulo, si existe; si no,
-# fallback al .env del directorio de trabajo actual.
+
 base_dir = Path(__file__).resolve().parent
 env_path = base_dir / ".env"
 if not env_path.exists():

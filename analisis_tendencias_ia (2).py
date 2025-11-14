@@ -1,11 +1,3 @@
-"""
-Analisis de Tendencias de Mercado con Agentes (Strands)
-
-Script principal que configura un Planner usando herramientas definidas en
-`agents.strands_tools`. Cada herramienta actualiza un contexto compartido
-y genera artefactos (gráficas, reportes, presentación).
-"""
-
 import asyncio
 import sys
 
@@ -70,7 +62,7 @@ def main():
 
     imagenes = _context.get('imagenes', [])
     print("\n" + "=" * 80)
-    print("✅ ANÁLISIS COMPLETADO EXITOSAMENTE")
+    print("ANÁLISIS COMPLETADO EXITOSAMENTE")
     print("=" * 80)
     print(f"\nArchivos generados:")
     for i, figura in enumerate(imagenes, 1):

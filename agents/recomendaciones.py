@@ -2,10 +2,6 @@ from datetime import datetime
 from utils.io import write_report
 
 class AgenteRecomendaciones:
-    """
-    Agente de IA especializado en generar insights y recomendaciones.
-    Analiza los resultados y proporciona conclusiones estratégicas.
-    """
 
     def __init__(self, datos, tendencias):
         self.datos = datos
@@ -14,7 +10,7 @@ class AgenteRecomendaciones:
 
     def generar_insights(self):
         """Genera insights basados en el análisis de datos"""
-        print("\n🤖 Agente de Recomendaciones: Generando insights...")
+        print("Agente de Recomendaciones: Generando insights...")
 
         insights = []
 
@@ -51,30 +47,30 @@ class AgenteRecomendaciones:
 
     def generar_recomendaciones_estrategicas(self):
         """Genera recomendaciones estratégicas"""
-        print("\n🤖 Agente de Recomendaciones: Generando recomendaciones estratégicas...")
+        print("Agente de Recomendaciones: Generando recomendaciones estratégicas...")
 
         recomendaciones = []
 
         # Recomendación 1: Oportunidades de mercado
         if 'programas' in self.tendencias and len(self.tendencias['programas']) > 0:
-            recomendaciones.append("💡 Oportunidad de Mercado: Los programas con mayor demanda "
+            recomendaciones.append("Oportunidad de Mercado: Los programas con mayor demanda "
                                  "representan áreas de alta oportunidad para inversión y expansión.")
 
         # Recomendación 2: Análisis competitivo
         if 'institucional' in self.tendencias and len(self.tendencias['institucional']) > 0:
-            recomendaciones.append("💡 Análisis Competitivo: Las instituciones líderes marcan "
+            recomendaciones.append("Análisis Competitivo: Las instituciones líderes marcan "
                                  "las tendencias del mercado. Estudiar sus estrategias puede "
                                  "proporcionar ventajas competitivas.")
 
         # Recomendación 3: Diversificación
         if 'areas' in self.tendencias and len(self.tendencias['areas']) > 1:
-            recomendaciones.append("💡 Diversificación: Considerar la diversificación hacia "
+            recomendaciones.append("Diversificación: Considerar la diversificación hacia "
                                  "múltiples áreas de conocimiento para mitigar riesgos y "
                                  "capturar diferentes segmentos de mercado.")
 
         # Recomendación 4: Sector público vs privado
         if 'sectores' in self.tendencias and len(self.tendencias['sectores']) > 0:
-            recomendaciones.append("💡 Estrategia Sectorial: Analizar las diferencias entre "
+            recomendaciones.append("Estrategia Sectorial: Analizar las diferencias entre "
                                  "sectores público y privado para identificar nichos "
                                  "específicos de oportunidad.")
 
@@ -82,7 +78,7 @@ class AgenteRecomendaciones:
 
     def generar_reporte_completo(self, insights, recomendaciones):
         """Genera un reporte completo en formato texto"""
-        print("\n🤖 Agente de Recomendaciones: Generando reporte completo...")
+        print("Agente de Recomendaciones: Generando reporte completo...")
 
         reporte = []
         reporte.append("=" * 80)
